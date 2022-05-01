@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div>
+        <h3>{{ list_["name"] }}  {{ list_["surname"] }}</h3>
+        <img src="/static/img/{{ list_["photo"] }}" style="width:50%;">
+        {% for speciality in list_["specialities"] %}
+        <h5>{{ speciality }}</h5>
+        {% endfor %}
+    </div>
+{% endblock %}  

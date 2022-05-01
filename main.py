@@ -1,6 +1,8 @@
-import base64  # библиотека для работы с битами картинок
-from flask import Flask, request
-from flask import render_template
+import base64
+from turtle import title  # библиотека для работы с битами картинок
+from flask import Flask, request, render_template
+import json
+from random import randint
 app = Flask(__name__)
 
 
@@ -9,40 +11,11 @@ def index():
     return "И на Марсе будут яблони цвести!"
 
 
-n = 1  # переменная для номер картинки
-images = []  # список для хранения названий картинок
-
-
-@app.route('/galery', methods=['POST', 'GET'])
-def galery():
-    global n, images, spisok
-    if request.method == 'GET':
-        return render_template('index.html', images=images)
-    elif request.method == 'POST':
-        image = request.files['file']  # достём изображение из формы
-        bytestring = image.read()  # читаем биты изображения
-        image = base64.b64encode(bytestring).decode('utf-8')
-        name_image = f"static/img/{n}.txt"
-        images.append(image)
-        n += 1
-        f = open(name_image, "w")
-        f.write(image)
-        f.close()
-        return render_template('index.html', images=images, spisok=spisok)
-
-
-@app.route('/load_photo', methods=['POST', 'GET'])
-def load_photo():
-    if request.method == 'GET':
-        return render_template('index_2.html')
-    elif request.method == 'POST':
-        image = request.files['file']  # достём изображение из формы
-        bytestring = image.read()  # читаем биты изображения
-        image = base64.b64encode(bytestring).decode('utf-8')
-        f = open("static/img/1.txt", "w")
-        f.write(image)
-        f.close()
-        return render_template('index_2.html', image=image)
+@app.route('/member')
+def member():
+    with open("templates/astro.json", "rt", encoding="utf8") as f:
+        list_ = json.loads(f.read())
+    return render_template('member.html', list_=list_[f"{randint(1, 3)}"])
 
 
 if __name__ == '__main__':

@@ -1,0 +1,24 @@
+{
+    "1": 
+        {
+            "name": "Den",
+            "surname": "Kireev",
+            "photo": "1.jpg",
+            "specialities": ["enginer", "photographer"]
+        },
+    
+    "2": 
+        {
+            "name": "Nikita",
+            "surname": "Zlobin",
+            "photo": "2.jpg",
+            "specialities": ["pilot", "enginer"]
+        },
+    "3": 
+        {
+            "name": "Fedor",
+            "surname": "Artyomov",
+            "photo": "3.jpg",
+            "specialities": ["enginer", "enginer-geolog"]
+        }
+}
