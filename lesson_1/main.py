@@ -15,11 +15,11 @@ images = []  # список для хранения названий карти�
 
 @app.route('/galery', methods=['POST', 'GET'])
 def galery():
-    global n, images, spisok
+    global n, images
     if request.method == 'GET':
         return render_template('index.html', images=images)
     elif request.method == 'POST':
-        image = request.files['file']  # достём изображение из формы
+        image = request.files['file']  # достаём изображение из формы
         bytestring = image.read()  # читаем биты изображения
         image = base64.b64encode(bytestring).decode('utf-8')
         name_image = f"static/img/{n}.txt"
@@ -28,7 +28,7 @@ def galery():
         f = open(name_image, "w")
         f.write(image)
         f.close()
-        return render_template('index.html', images=images, spisok=spisok)
+        return render_template('index.html', images=images)
 
 
 @app.route('/load_photo', methods=['POST', 'GET'])
@@ -36,7 +36,7 @@ def load_photo():
     if request.method == 'GET':
         return render_template('index_2.html')
     elif request.method == 'POST':
-        image = request.files['file']  # достём изображение из формы
+        image = request.files['file']  # достаём изображение из формы
         bytestring = image.read()  # читаем биты изображения
         image = base64.b64encode(bytestring).decode('utf-8')
         f = open("static/img/1.txt", "w")
