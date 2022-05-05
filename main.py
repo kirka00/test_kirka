@@ -1,8 +1,5 @@
-import base64
-from turtle import title  # библиотека для работы с битами картинок
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 import json
-from random import randint
 app = Flask(__name__)
 
 
@@ -15,7 +12,7 @@ def index():
 def member():
     with open("templates/astro.json", "rt", encoding="utf8") as f:
         list_ = json.loads(f.read())
-    return render_template('member.html', list_=list_[f"{randint(1, 3)}"])
+    return render_template('member.html', list_=list_)
 
 
 if __name__ == '__main__':

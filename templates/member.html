@@ -3,9 +3,11 @@
 
 {% block content %}
     <div>
-        <h3>{{ list_["name"] }}  {{ list_["surname"] }}</h3>
-        <img src="/static/img/{{ list_["photo"] }}" style="width:50%;">
-        {% for speciality in list_["specialities"] %}
+        {%  set n = ["1", "2", "3"] | random %}
+        {% set human = list_[n] %}
+        <h3>{{ human["name"] }}  {{ human["surname"] }}</h3>
+        <img src="/static/img/{{ human["photo"] }}" style="width:50%;">
+        {% for speciality in human["specialities"] %}
         <h5>{{ speciality }}</h5>
         {% endfor %}
     </div>
