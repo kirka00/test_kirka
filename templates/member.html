@@ -7,7 +7,7 @@
         {% set human = list_[n] %}
         <h3>{{ human["name"] }}  {{ human["surname"] }}</h3>
         <img src="/static/img/{{ human["photo"] }}" style="width:50%;">
-        {% for speciality in human["specialities"] %}
+        {% for speciality in human["specialities"] | sort %}
         <h5>{{ speciality }}</h5>
         {% endfor %}
     </div>
